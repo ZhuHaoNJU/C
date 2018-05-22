@@ -1,1 +1,115 @@
 zhuhao studys in nanjing university.
+123@idea-PC MINGW64 ~/Documents/workspace/C (master)
+$ ls
+tset.txt
+
+123@idea-PC MINGW64 ~/Documents/workspace/C (master)
+$ ls tset.txt
+tset.txt
+
+123@idea-PC MINGW64 ~/Documents/workspace/C (master)
+$ get add.
+bash: get: command not found
+
+123@idea-PC MINGW64 ~/Documents/workspace/C (master)
+$ git add.
+git: 'add.' is not a git command. See 'git --help'.
+
+The most similar command is
+        add
+
+123@idea-PC MINGW64 ~/Documents/workspace/C (master)
+$ git add tset.txt
+
+123@idea-PC MINGW64 ~/Documents/workspace/C (master)
+$ git commit -m
+error: switch `m' requires a value
+usage: git commit [<options>] [--] <pathspec>...
+
+    -q, --quiet           suppress summary after successful commit
+    -v, --verbose         show diff in commit message template
+
+Commit message options
+    -F, --file <file>     read message from file
+    --author <author>     override author for commit
+    --date <date>         override date for commit
+    -m, --message <message>
+                          commit message
+    -c, --reedit-message <commit>
+                          reuse and edit message from specified commit
+    -C, --reuse-message <commit>
+                          reuse message from specified commit
+    --fixup <commit>      use autosquash formatted message to fixup specified commit
+    --squash <commit>     use autosquash formatted message to squash specified commit
+    --reset-author        the commit is authored by me now (used with -C/-c/--amend)
+    -s, --signoff         add Signed-off-by:
+    -t, --template <file>
+                          use specified template file
+    -e, --edit            force edit of commit
+    --cleanup <default>   how to strip spaces and #comments from message
+    --status              include status in commit message template
+    -S, --gpg-sign[=<key-id>]
+                          GPG sign commit
+
+Commit contents options
+    -a, --all             commit all changed files
+    -i, --include         add specified files to index for commit
+    --interactive         interactively add files
+    -p, --patch           interactively add changes
+    -o, --only            commit only specified files
+    -n, --no-verify       bypass pre-commit and commit-msg hooks
+    --dry-run             show what would be committed
+    --short               show status concisely
+    --branch              show branch information
+    --ahead-behind        compute full ahead/behind values
+    --porcelain           machine-readable output
+    --long                show status in long format (default)
+    -z, --null            terminate entries with NUL
+    --amend               amend previous commit
+    --no-post-rewrite     bypass post-rewrite hook
+    -u, --untracked-files[=<mode>]
+                          show untracked files, optional modes: all, normal, no. (Default: all)
+
+
+123@idea-PC MINGW64 ~/Documents/workspace/C (master)
+$ git commit -m the first message
+error: pathspec 'first' did not match any file(s) known to git.
+error: pathspec 'message' did not match any file(s) known to git.
+
+123@idea-PC MINGW64 ~/Documents/workspace/C (master)
+$ git commit -m 'the first message'
+
+*** Please tell me who you are.
+
+Run
+
+  git config --global user.email "you@example.com"
+  git config --global user.name "Your Name"
+
+to set your account's default identity.
+Omit --global to set the identity only in this repository.
+
+fatal: unable to auto-detect email address (got '123@idea-PC.(none)')
+
+123@idea-PC MINGW64 ~/Documents/workspace/C (master)
+$ git config --global user.email "2943879810@qq.com"
+
+123@idea-PC MINGW64 ~/Documents/workspace/C (master)
+$  git config --global user.name "ZhuHaoNJU"
+
+123@idea-PC MINGW64 ~/Documents/workspace/C (master)
+$ git commit -m "the first message"
+[master (root-commit) 52c2037] the first message
+ 1 file changed, 1 insertion(+)
+ create mode 100644 tset.txt
+
+123@idea-PC MINGW64 ~/Documents/workspace/C (master)
+$ git push origin master
+Counting objects: 3, done.
+Writing objects: 100% (3/3), 251 bytes | 125.00 KiB/s, done.
+Total 3 (delta 0), reused 0 (delta 0)
+To https://github.com/ZhuHaoNJU/C.git
+ * [new branch]      master -> master
+
+123@idea-PC MINGW64 ~/Documents/workspace/C (master)
+$fuck
