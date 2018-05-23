@@ -1,0 +1,153 @@
+#include <stdio.h>
+#include <string.h>
+static unsigned long int next=1;
+extern unsigned int rand0(void);
+extern void strand1(unsigned int seed);
+#define LENGTH 30
+#define games 10
+
+char *s_gets(char*st, int n);
+struct participants {
+	char school[LENGTH];
+	char name[LENGTH];
+	int number[games];
+	int mark;
+	int address; 
+	int mode;
+};
+int main()
+{
+	int index, half, seed, count=0;
+    
+	printf("Enter the number of the participants, please.\n");
+	scanf("%d", &index);
+	printf("And enter your favourite number.\n");
+	scanf("%d", &seed);
+	strand1(seed);
+	int array[index];
+	struct participants fighters[index];
+	if (index<=4)
+		half=2;
+	else if(index<=8)
+		half=4;
+	else if ( index<=16)
+		half=8;
+	else 
+		half=16;
+	
+	printf("%d\n", half);
+	s_gets(fighters[0].school, LENGTH);
+	while (count<index)
+	{
+		printf("Enter the name of the participant's school.\n");
+		s_gets(fighters[count].school, LENGTH);
+		printf("Now enter the member's name:\n");
+		s_gets(fighters[count].name, LENGTH);
+		fighters[count].mark=rand0();
+		array[count]=fighters[count].mark;
+		count++;
+	/*	while (getchar()!='\n')
+		{
+			continue;
+		}*/
+		if (count<index)
+		{
+			printf("Enter the information of next participant.\n");
+		}
+	}
+	printf("Here is the list of participants:\n");
+	for (count=0; count<index; count++)
+	{
+		printf("school:%s and name:%s and mark:%d\n", fighters[count].school, fighters[count].name, fighters[count].mark);
+	}
+	for(count=0; count<index;count++)
+	{
+		printf("%d", array[count]);
+	}
+	printf("\n");
+	int i, j, temp;
+	for(i=0; i<index;i++)
+	{
+		fighters[i].address=i+1;
+	}
+	for(i=0; i<index-1; i++)
+	{
+		for(j=0; j<index-i-1; j++)
+		{
+			if(array[j]>array[j+1])
+			{
+				temp=array[j];
+				array[j]=array[j+1];
+				array[j+1]=temp;
+				fighters[j].address=j+2;
+			}
+		}
+	}
+	for(i=0;i<index;i++)
+	{
+		printf("%d", array[i]);
+		fighters[i].mode=0;
+	}
+	printf("\n");
+	for(i=0; i<index; i++)
+	{
+		fighters[i].address=fighters[i].address%half;
+	}
+	for(i=0; i<index; i++)
+	{
+		if(fighters[i].mode==0)
+		{
+			for(j=i+1; j<index;j++)
+		    {
+			   if(fighters[i].address==fighters[j].address)
+			   {
+				  printf("%s %s 第一轮的对手是 %s %s\n", fighters[i].school, fighters[i].name, fighters[j].school, fighters[j].name);
+				  fighters[i].mode=1;
+				  fighters[j].mode=1;
+			   }
+		    }
+		}
+	}
+	for(i=0;i<index;i++)
+	{
+		if(fighters[i].mode==0)
+		{
+			printf("%s%s 第一轮轮空 \n", fighters[i].school, fighters[i].name);
+		}
+	}
+	return 0;
+}
+
+unsigned int rand0(void)
+{
+	next=next*1103515245+12345;
+	return (unsigned int) (next/65536)%32768;
+}
+char *s_gets(char*st ,int n)
+{
+	char *ret_val;
+	char *find;
+	ret_val=fgets(st, n, stdin);
+	if (ret_val)
+	{
+		find=strchr(st, '\n');
+		if (find)
+		{
+			*find='\0';
+		}
+		else
+		{
+			while(getchar()!='\n')
+			{
+				continue;
+			}
+		}
+	}
+	
+	return ret_val;
+	
+}
+void strand1(unsigned int seed)
+{
+	next=seed;
+}
